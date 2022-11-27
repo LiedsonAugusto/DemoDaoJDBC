@@ -33,7 +33,7 @@ public class Program {
 		
 		System.out.println("\nINSERT IN SELLER");
 		Seller sel = new Seller(null, "Lied", "lied@gmail.com", new Date(), 5000.0, department);
-		//sellerDao.insert(sel);
+		sellerDao.insert(sel);
 		System.out.println(sellerDao.findById(8));
 		
 		System.out.println("\nUPDATE IN SELLER");
@@ -42,6 +42,12 @@ public class Program {
 		sellerDao.update(seller);
 		System.out.println(seller);
 		
+//		System.out.println("\nDELETE IN SELLER");
+//		sellerDao.deleteById(8);
+//		List<Seller> list3 = sellerDao.findAll();
+//		for (Seller obj : list3) {
+//			System.out.println(obj);
+//		}
 		
 	}
 

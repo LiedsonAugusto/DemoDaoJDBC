@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,8 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 					"INSERT INTO department "
 					+ "(Name) "
 					+ "VALUES "
-					+ "(?)");
+					+ "(?)",
+					Statement.RETURN_GENERATED_KEYS);
 			st.setString(1, obj.getName());
 			int rowsAffected = st.executeUpdate();
 			if (rowsAffected > 0) {
@@ -132,8 +134,8 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 	}
 	
 	private Department instantiateDepartment(ResultSet rs) throws SQLException {
-		int departmentID = rs.getInt("DepartmentId");
-		String departmentName = rs.getString("DepName");
+		int departmentID = rs.getInt("Id");
+		String departmentName = rs.getString("Name");
 		return new Department(departmentID, departmentName);
 	}
 
